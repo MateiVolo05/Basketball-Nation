@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Basketball Nation</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="http://localhost:3000/styles/mystyle.css" type="text/css">
+    <link rel="icon" href="http://localhost:3000/images/Basketball Nation.png">
+</head>
+<body>
+     <div class="top">
+        <div class="dropdown">
+            <button class="dropbtn wide">Categories</button><button class="dropbtn mobile">≡</button>
+            <div class="dropdown-content">
+                <a href="/">Home</a>
+                <%categories.forEach(category=>{%>
+                    <a href='/<%=category.name%>'><%=category.name.charAt(0).toUpperCase()+category.name.slice(1)%></a>
+                <%})%>
+            </div>
+        </div>
+        <img src="http://localhost:3000/images/Basketball Nation.png">
+    </div>
+    <div class="content">
+        <h1 id="title"><%=article.title.charAt(0).toUpperCase()+article.title.slice(1)%></h1>
+        <h3 style="padding-left: 6vh;">Created at <%=article.createdAt.toLocaleDateString()%> for <%=article.category.charAt(0).toUpperCase()+article.category.slice(1)%></h3>
+        <div id="btn-ed-show">
+            <button id="edit"><a href="/edit/<%=article.id%>">Edit</a></button>
+            <form action="/<%=article.id%>?_method=DELETE" method="post"><button id="delete">Delete</button></form>
+        </div>
+        <%if(String(article.image)!==""){%>
+            <img src="<%=article.image%>" id="show-img"><br>
+        <%}%>
+        <% if(article.link!==""){ %>
+            <% function getId(url){%>
+                <% const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/; %>
+                <% const match = url.match(regExp); %>
+                <%  return (match && match[2].length === 11)? match[2]: null; %>
+            <%}%>
+                <% const id=getId(article.link) %>
+                <iframe width="40%" height="300vh" src="https://www.youtube.com/embed/<%=id%>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <% } %>
+        <p id="justify"><%=article.content.charAt(0).toUpperCase()+article.content.slice(1)%></p>
+    </div>
+</body>
+</html>

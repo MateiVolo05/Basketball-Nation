@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Basketball Nation</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="http://localhost:3000/styles/mystyle.css" type="text/css">
+    <link rel="icon" href="http://localhost:3000/images/Basketball Nation.png">
+</head>
+<body>
+     <div class="top">
+        <div class="dropdown">
+            <button class="dropbtn wide">Categories</button><button class="dropbtn mobile">≡</button>
+            <div class="dropdown-content">
+                <a href="/">Home</a>
+                <a href="/news">News</a>
+                <a href="/highlights">Highlights</a>
+                <a href="/sneakers">Sneakers</a>
+                <a href="memes">Memes</a>
+            </div>
+        </div>
+        <img src="http://localhost:3000/images/Basketball Nation.png">
+    </div>
+    <div class="content">
+        <h1 style="padding-left: 43.5%;">New Post</h1>
+        <form action='/<%=article.id%>?_method=PATCH' method="POST">
+            <%- include('_form')%>
+        </form>
+    </div>
+</body>
+</html>

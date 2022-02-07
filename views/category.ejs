@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Basketball Nation</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="http://localhost:3000/styles/mystyle.css" type="text/css">
+    <link rel="icon" href="http://localhost:3000/images/Basketball Nation.png">
+</head>
+<body>
+     <div class="top">
+        <div class="dropdown">
+            <button class="dropbtn wide">Categories</button><button class="dropbtn mobile">≡</button>
+            <div class="dropdown-content">
+                <a href="/">Home</a>
+                <%categories.forEach(category=>{%>
+                    <%if(category.name!==current){%>
+                        <a href='/<%=category.name%>'><%=category.name.charAt(0).toUpperCase()+category.name.slice(1)%></a>
+                    <%}%>
+                <%})%>
+            </div>
+        </div>
+        <img src="http://localhost:3000/images/Basketball Nation.png">
+    </div>
+    <div class="content">
+        <h1>Basketball Blog</h1>
+        <div class="blog">
+            <div id="cat-ed">
+                <button id="btn-np"><a href="/new"><strong>New Post</strong></a></button>
+                <form action="/category/<%=currentId%>?_method=DELETE" method="post"><button id="delete">Delete</button></form>
+            </div>
+            <div class="posts">
+                <%if(articles.length===0){%>
+                    <h1 id="err">Ups! No articles found in this category!</h1>
+                <%}%>
+                <% articles.forEach(article=>{ %>
+                   <div class="article">
+                        <h3><%=article.title.charAt(0).toUpperCase()+article.title.slice(1)%></h3>
+                        <p><%=article.description.charAt(0).toUpperCase()+article.description.slice(1) %></p>
+                        <p class="category"><%=article.category.charAt(0).toUpperCase()+article.category.slice(1)%></p>
+                        <p>Created at <%=article.createdAt.toLocaleDateString()%></p>
+                        <div id="btn-ed">
+                            <button id="read"><a href="/read/<%=article.id%>">Read More</a></button>
+                            <button id="edit"><a href="/edit/<%=article.id%>">Edit</a></button>
+                            <form action="/<%=article.id%>?_method=DELETE" method="post"><button id="delete">Delete</button></form>
+                        </div>
+                    </div>
+                <%}) %>
+            </div>
+        </div>
+    </div>
+    <script>
+        function show(){
+            const cat=document.querySelector('#category-input')
+            cat.style.display='inline-block'
+        }
+        function hide(){
+            const cat=document.querySelector('#category-input')
+            if(document.querySelector('#ncategory').value!=="")
+                cat.style.display='none'
+        }
+        function hide2(){
+            const cat=document.querySelector('#category-input')
+            cat.style.display='none'
+        }
+    </script>
+</body>
+</html>

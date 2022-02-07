@@ -1,0 +1,23 @@
+<div class="form-ctrl">
+    <label for="title">Title</label>
+    <input type="text" required name="title" placeholder="Post title..." value="<%=article.title%>">
+    <label for="category">Type</label>
+    <select id="category" name="category" required>
+        <option value="" disabled selected id="disabled">-Post type-</option>
+        <%categories.forEach(category=>{%>
+                <option value="<%=category.name%>"><%=category.name.charAt(0).toUpperCase()+category.name.slice(1)%></option>
+        <%})%>
+    </select>
+    <label for="description">Description</label>
+    <textarea name="description" id="description-text"><%=article.description%></textarea>
+    <label for="content">Content</label>
+    <textarea name="content" id="content-text" required><%=article.content%></textarea>
+    <label for="link">YouTube video link</label>
+    <input type="url" name="link" placeholder="Link to the video..." value="<%=article.link%>">
+    <label for="image">Image link</label>
+    <input type="url" name="image" placeholder="Link to the image..." value="<%=article.image%>">
+</div>
+<div class="form-btns">
+    <button id="cancel"><a href="/">Cancel</a></button>
+    <button type="submit" id="save">Save</button>
+</div>
