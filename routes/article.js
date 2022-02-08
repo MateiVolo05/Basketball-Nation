@@ -1,5 +1,5 @@
 import express from 'express'
-import {Article,Category} from '../models/Article.js'
+import {Article,Category} from '../models/Models.js'
 const router=express.Router()
 
 router.get('/',async (req,res)=>{
