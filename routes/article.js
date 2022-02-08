@@ -86,6 +86,7 @@ router.patch('/:id',async(req,res)=>{
         }
         else res.status(404).send()
     } catch (error) {
+        const categories= await Category.find()
         res.render('error',{categories:categories})
     }
     
@@ -101,15 +102,19 @@ router.delete('/:id',async(req,res)=>{
             res.status(404)
         }  
     } catch (error) {
+        const categories= await Category.find()
         res.render('error',{categories:categories})
     }
     
 })
 
 router.delete('/category/:id',async(req,res)=>{
+    const categories= await Category.find()
     try {
         const category=await Category.findOneAndDelete({_id:req.params.id})
-        const article=await Article.findOneAndDelete({category:category.name})
+        for(let i=0;i<=categories.length;i++){
+            const article=await Article.findOneAndDelete({category:category.name})
+        }
         if(category){
             res.redirect('/')
         }
