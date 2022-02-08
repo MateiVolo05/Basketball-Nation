@@ -5,7 +5,12 @@
     <select id="category" name="category" required>
         <option value="" disabled selected id="disabled">-Post type-</option>
         <%categories.forEach(category=>{%>
+            <%if(String(category.name)===String(article.category)){%>
+                <option selected value="<%=category.name%>"><%=category.name.charAt(0).toUpperCase()+category.name.slice(1)%></option>
+            <%}%>
+            <%if(String(category)!==String(article.category)){%>
                 <option value="<%=category.name%>"><%=category.name.charAt(0).toUpperCase()+category.name.slice(1)%></option>
+            <%}%>
         <%})%>
     </select>
     <label for="description">Description</label>
