@@ -15,9 +15,7 @@
             <div class="dropdown-content">
                 <a href="/">Home</a>
                 <%categories.forEach(category=>{%>
-                    <%if(category.name!==current){%>
-                        <a href='/<%=category.name%>'><%=category.name.charAt(0).toUpperCase()+category.name.slice(1)%></a>
-                    <%}%>
+                    <a href='/<%=category.name%>'><%=category.name.charAt(0).toUpperCase()+category.name.slice(1)%></a>
                 <%})%>
             </div>
         </div>
