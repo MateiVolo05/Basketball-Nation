@@ -1,5 +1,5 @@
 # Basketball-Nation
-A blog for all basketball fans to read news or see other opinions. You can add, edit or delete posts. Also, you can add categories or delete them. 
+A blog for all basketball fans to read news or see other opinions. You can add, edit or delete posts. Also, you can add categories, edit or delete them. 
 All the posts and categories are stored in a MongoDb database and accessed by the server.
 
 ## Screenshots
