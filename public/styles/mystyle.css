@@ -12,6 +12,14 @@
                 display: inline-block;
             }
         }
+        @media screen and (min-width:450px) {
+            .mobile{
+                display: none;
+            }
+            .wide{
+                display: inline-block;
+            }
+        }
         @media screen and (max-width:480px){
             .mobile{
                 display: inline-block;
