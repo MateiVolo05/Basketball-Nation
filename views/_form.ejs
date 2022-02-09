@@ -7,8 +7,7 @@
         <%categories.forEach(category=>{%>
             <%if(String(category.name)===String(article.category)){%>
                 <option selected value="<%=category.name%>"><%=category.name.charAt(0).toUpperCase()+category.name.slice(1)%></option>
-            <%}%>
-            <%if(String(category)!==String(article.category)){%>
+            <%}else{%>
                 <option value="<%=category.name%>"><%=category.name.charAt(0).toUpperCase()+category.name.slice(1)%></option>
             <%}%>
         <%})%>

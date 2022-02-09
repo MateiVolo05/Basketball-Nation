@@ -302,3 +302,6 @@
             border-style: outset;
             border-color: #211c1d;
         }
+        #show-input{
+            margin-top: 1vh;
+        }

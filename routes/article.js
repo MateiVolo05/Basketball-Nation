@@ -82,7 +82,7 @@ router.patch('/:id',async(req,res)=>{
     try {
         const article=await Article.findOneAndUpdate({_id:req.params.id},req.body)
         if(article){
-            res.redirect('/')
+            res.redirect(`/read/${article._id}`)
         }
         else res.status(404).send()
     } catch (error) {
