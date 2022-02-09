@@ -23,7 +23,7 @@
     </div>
     <div class="content">
         <h1 id="title"><%=article.title.charAt(0).toUpperCase()+article.title.slice(1)%></h1>
-        <h3 style="padding-left: 6vh;">Created at <%=article.createdAt.toLocaleDateString()%> for <%=article.category.charAt(0).toUpperCase()+article.category.slice(1)%></h3>
+        <h3 style="padding-left: 6vh;">Created at <%=article.createdAt.toLocaleDateString("en-GB", { hour: "2-digit", minute: "2-digit"})%> for <%=article.category.charAt(0).toUpperCase()+article.category.slice(1)%></h3>
         <div id="btn-ed-show">
             <button id="edit"><a href="/edit/<%=article.id%>">Edit</a></button>
             <form action="/<%=article.id%>?_method=DELETE" method="post"><button id="delete">Delete</button></form>

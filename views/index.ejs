@@ -41,7 +41,7 @@
                         <h3><%=article.title.charAt(0).toUpperCase()+article.title.slice(1)%></h3>
                         <p><%=article.description.charAt(0).toUpperCase()+article.description.slice(1) %></p>
                         <p class="category"><%=article.category.charAt(0).toUpperCase()+article.category.slice(1)%></p>
-                        <p>Created at <%=article.createdAt.toLocaleDateString()%></p>
+                        <p>Created at <%=article.createdAt.toLocaleDateString("en-GB", { hour: "2-digit", minute: "2-digit"})%></p>
                         <div id="btn-ed">
                             <button id="read"><a href="/read/<%=article.id%>">Read</a></button>
                             <button id="edit"><a href="/edit/<%=article.id%>">Edit</a></button>
