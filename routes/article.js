@@ -89,7 +89,41 @@ router.patch('/:id',async(req,res)=>{
         const categories= await Category.find()
         res.render('error',{categories:categories})
     }
-    
+})
+
+router.patch('/category/:id',async(req,res)=>{
+    try{
+        const currentCategory=await Category.find({_id:req.params.id})
+        const currentName=currentCategory[0].name
+        const category=await Category.findOneAndUpdate({_id:req.params.id},req.body)
+        if(category){
+            let articles=await Article.find({category:currentName})
+            for(let i=0;i<articles.length;i++){
+                articles[i].category=String(req.body.name)
+                articles[i]=await articles[i].save()
+            }
+            res.redirect('/')
+        }
+        else res.status(404).send()
+    }catch (error) {
+        const categories= await Category.find()
+        res.render('error',{categories:categories})
+    }
+    /*const categories= await Category.find()
+    try {
+        const category=await Category.findOneAndUpdate({_id:req.params.id},req.params)
+        for(let i=0;i<=categories.length;i++){
+            const article=await Article.findOneAndUpdate({category:category.name},req.params)
+        }
+        if(category){
+            res.redirect('/')
+        }
+        else{
+            res.status(404)
+        }  
+    } catch (error) {
+        res.render('error',{categories:categories})
+    }*/
 })
 
 router.delete('/:id',async(req,res)=>{
@@ -112,7 +146,7 @@ router.delete('/category/:id',async(req,res)=>{
     const categories= await Category.find()
     try {
         const category=await Category.findOneAndDelete({_id:req.params.id})
-        for(let i=0;i<=categories.length;i++){
+        for(let i=0;i<categories.length;i++){
             const article=await Article.findOneAndDelete({category:category.name})
         }
         if(category){

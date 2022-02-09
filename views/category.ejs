@@ -28,6 +28,14 @@
         <div class="blog">
             <div id="cat-ed">
                 <button id="btn-np"><a href="/new"><strong>New Post</strong></a></button>
+                <form action="/category/<%=currentId%>?_method=PATCH" method="post" class="new-category">
+                    <button id="edit" type="button" onclick="show()"><strong>Edit</strong></button>
+                    <div id="category-input">
+                        <input type="text" name="name" required id="ncategory">
+                        <button type="submit" id="save" onclick="hide()"><strong>Save</strong></button>
+                        <button type="button" id="cancel" onclick="hide2()"><strong>Cancel</strong></button>
+                    </div>
+                </form>
                 <form action="/category/<%=currentId%>?_method=DELETE" method="post"><button id="delete">Delete</button></form>
             </div>
             <div class="posts">
