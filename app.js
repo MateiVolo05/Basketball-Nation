@@ -7,6 +7,7 @@ import articlesRouter from './routes/article.js'
 dotenv.config()
 const app=express()
 const port=process.env.PORT || 3000
+const dburl=process.env.MONGODB_URL;
 
 app.set('view engine', 'ejs');
 app.use(express.static("public"));
@@ -19,5 +20,5 @@ app.use('/',articlesRouter)
 
 app.listen(port, ()=>{
     console.log(`Example app listening at http://localhost:${port}`)
-    mongoose.connect(process.env.MONGODB_URL)
+    mongoose.connect(dburl)
 })
